@@ -2,7 +2,7 @@
 name: clear-natural-zh
 description: 合并 Humanizer-zh 与 ste-zh v1.0.0 的中文编辑技能。用于回答、文档及代码注释的消歧义与自然表达，保留原意、确定程度和作者声音；支持自然模式与严格技术模式。
 metadata:
-  version: 1.0.0
+  version: 1.1.0
   sources: Humanizer-zh local revision 2026-09-23; ste-zh 1.0.0
 ---
 
@@ -75,6 +75,8 @@ python3 <skill-dir>/scripts/ste-lint-zh.py --max-chars 25 <文件>
 python3 <skill-dir>/scripts/ste-lint-zh.py --selftest
 ```
 
-将 `<skill-dir>` 换成本技能目录。脚本保持 ste-zh v1.0.0 原实现，只使用 Python 标准库。它把某些词、同义词组和长度命中记为硬违规，可能误报。退出码不代表本技能的最终判断，更不证明原意保留；不得为了清零删除事实或正确术语。逐项复核后决定是否修改。
+将 `<skill-dir>` 换成本技能目录。脚本基于 ste-zh v1.0.0 扩展，只使用 Python 标准库。普通回答建议使用 `--profile natural`，全部发现均作为建议；默认 `strict` 保留结构及词汇硬规则，术语轮换始终只作建议。用 `--allow 闭环控制` 豁免指定术语的词汇检查。标记仍可能误报。退出码不代表本技能的最终判断，更不证明原意保留；不得为了清零删除事实或正确术语。逐项复核后决定是否修改。
+
+扩展功能、参数和解析边界见 [references/linter-research.md](references/linter-research.md)。
 
 来源和合并差异见 [references/provenance.md](references/provenance.md)。随附脚本许可见 [LICENSE-ste-zh](LICENSE-ste-zh)。

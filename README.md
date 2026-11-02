@@ -66,11 +66,30 @@ git clone https://github.com/Sun-Season/clear-natural-zh.git ~/.codex/skills/cle
 ```bash
 python3 scripts/ste-lint-zh.py document.md
 python3 scripts/ste-lint-zh.py --json document.md
+python3 scripts/ste-lint-zh.py --profile natural --allow 闭环控制 document.md
+python3 scripts/ste-lint-zh.py --format text notes.txt
 python3 scripts/ste-lint-zh.py --max-chars 25 steps.md
 python3 scripts/ste-lint-zh.py --selftest
 ```
 
-脚本来自 ste-zh v1.0.0，保持原实现。它会机械标记部分词语、句长和同义词，可能误报。检查结果需要结合语义复核，不能为了消除警告而删掉事实或正确术语。零警告不证明原意保留。
+脚本基于 ste-zh v1.0.0 扩展。它会机械标记部分词语、句长和同义词，可能误报。检查结果需要结合语义复核，不能为了消除警告而删掉事实或正确术语。零警告不证明原意保留。
+
+### v1.1.0 的改进
+
+- 自然模式将全部发现作为建议；严格模式仍是默认值。术语轮换在两种模式下都只作建议。
+- `--allow TERM` 可重复指定术语，不影响句长和标点检查。
+- 改善代码围栏、跨行代码片段、链接、引用式链接、HTML 注释及 YAML front matter 的处理。链接文字参与检查，地址不参与。
+- 修正嵌套术语重复计数、重复词漏报及重叠词重复报告，保留原始行列坐标。
+- 验证参数和 UTF-8 输入；`--baseline` 按全部输入的硬违规合计计算，摘要计数排除屏蔽内容。
+
+旧 CLI 参数和 JSON 发现字段保持不变。注意：同义词轮换从硬违规降为建议，可能改变退出码。自然模式有发现也返回 0；严格模式硬违规超过 baseline 返回 1；输入或参数错误返回 2。JSON 模式读取文件失败时，错误写到 stderr，stdout 留空。
+
+```bash
+python3 -m unittest discover -s tests -v
+python3 scripts/ste-lint-zh.py --selftest
+```
+
+调研依据、解析边界与后续方向见 [linter-research.md](references/linter-research.md)。
 
 ## 来源与许可
 
