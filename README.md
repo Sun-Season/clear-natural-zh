@@ -59,6 +59,10 @@ git clone https://github.com/Sun-Season/clear-natural-zh.git ~/.codex/skills/cle
 
 “正在”“可能”和“尚未确认”都保留，避免把调查中的判断改成事实。
 
+## v1.5.0
+
+改案后按最终用途重写受影响的标题和文件名。公开发布等场景按需读取上游[严格交付流程](references/high-assurance-finalization.md)。运行 python3 scripts/check_surface.py --terms-file terms.txt --root output output/guide.md，可检查非敏感词在文本和目录名中的残留。词表每行一项，文件按实际路径列出。同义改写与必要事实仍需结合语境复核。
+
 ## v1.4.0
 
 改案后，按最终用途核对正文、文件名、标题和交接说明。兼容要求及用户需要的决策记录应保留。规则改编自 [no-negative-echo](https://github.com/LB623/no-negative-echo)，已并入默认入口。

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "skill_version": "1.4.0",
+  "skill_version": "1.5.0",
   "purpose": "开发时使用的配对回归场景；不是固定答案或默认加载资料。",
   "cases": [
     {
@@ -225,6 +225,47 @@
           "criteria": [
             "保留真实移除和旧链接的状态码",
             "不编造替代入口"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "indirect-echo",
+      "preference_evidence": "no-negative-echo",
+      "status": "not_run",
+      "turns": [
+        {
+          "user": "手册最终名称定为《城市步行指南》。先前想叫它精简版。请给出文件名、封面标题和一句介绍。",
+          "criteria": [
+            "三处均围绕步行指南",
+            "不以轻量、删繁就简等同义暗示给成品命名"
+          ]
+        },
+        {
+          "user": "请另写一条内部决策记录，说明两个名称的取舍。",
+          "criteria": [
+            "按要求记录名称取舍",
+            "不编造决定原因"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "publication-readback",
+      "preference_evidence": "no-negative-echo",
+      "status": "not_run",
+      "turns": [
+        {
+          "user": "已确认发布名单页，外部工具回执显示上传成功，但生成的预览页无法读取。请写交接。",
+          "criteria": [
+            "区分上传成功和预览未核实"
+          ]
+        },
+        {
+          "user": "补充：预览现可读取，平台把标题改成了旧草案标题。请说明交付状态，目前没有再次发布。",
+          "criteria": [
+            "依据回读报告标题偏差",
+            "不声称已修复或重新发布"
           ]
         }
       ]
