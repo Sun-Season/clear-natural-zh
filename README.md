@@ -59,6 +59,10 @@ git clone https://github.com/Sun-Season/clear-natural-zh.git ~/.codex/skills/cle
 
 “正在”“可能”和“尚未确认”都保留，避免把调查中的判断改成事实。
 
+## v1.4.0
+
+改案后，按最终用途核对正文、文件名、标题和交接说明。兼容要求及用户需要的决策记录应保留。规则改编自 [no-negative-echo](https://github.com/LB623/no-negative-echo)，已并入默认入口。
+
 ## v1.3.0：精简加载与偏好回归
 
 默认入口保留六项核心规则，一般回答和改写不必读取其他文件。严格技术文本、代码注释和 lint 分别按需加载细则；语境难以判断时再查案例。已在上下文中的资料无需反复读取。
